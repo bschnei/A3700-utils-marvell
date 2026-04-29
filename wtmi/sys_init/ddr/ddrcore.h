@@ -35,6 +35,8 @@
 #ifndef __DDRCORE_H_
 #define __DDRCORE_H_
 
+#include <stdbool.h>
+
 #define MAX_CS_NUM		2
 #define MAX_BANK_GROUP_NUM	4
 #define MAX_BANK_NUM	8
