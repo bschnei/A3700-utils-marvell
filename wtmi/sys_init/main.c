@@ -344,9 +344,11 @@ int main(int exception, char **dummy)
 	* to SRAM start address 0x1fff0000. CM3 executing start address is
 	* sys_init.bin start address; after sys_init finishes the
 	* initialization work, PC address will jump back to WTMI runing image
-	* start address 0x1fff0000.
+	* start address 0x1fff0000. We tell the linker that this is a thumb
+	* address by setting the least significant bit resulting in 0x1fff0001.
 	*/
-	__asm__ volatile("bl 0x1fff0000\n");
+	void (*const start)(void) = (void (*)(void))0x1fff0001;
+	start();
 
 	return NO_ERROR;
 }
